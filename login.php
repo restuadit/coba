@@ -24,7 +24,7 @@ session_start()
         <form class="mb-3" action="" method="post">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">nama</label>
-                <input  placeholder="masukan nama anda" autocomplete="off" type="text" name="nama" class="form-control" id="exampleInputnama" >
+                <input  placeholder="masukan nama anda" autocomplete="off" type="email" name="nama" class="form-control" id="exampleInputnama" >
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -39,15 +39,15 @@ session_start()
 <?php
 if (isset($_POST['login'])) {
     
-    include "konek.php";
+    include "koneksi.php";
 
     $username=mysqli_real_escape_string($koneksi,$_POST['nama']);
     $password=$_POST['password'];
 
-    $query = mysqli_query($koneksi, "SELECT * FROM  petuga WHERE nama='$username' AND password='$password'");
+    $query = mysqli_query($koneksi, "SELECT * FROM  karyawan WHERE email='$username' AND password='$password'");
     $data = mysqli_fetch_array($query);
     if (mysqli_num_rows($query)>0) {
-        if ($data[level]=='admin') {
+        if ($data['level']=='admin') {
             header("location:home.php");
             $_SESSION['status'] = "berhasil";
             $_SESSION['nama'] = $data;
