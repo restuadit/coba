@@ -47,9 +47,12 @@ if (isset($_POST['login'])) {
     $query = mysqli_query($koneksi, "SELECT * FROM  petuga WHERE nama='$username' AND password='$password'");
     $data = mysqli_fetch_array($query);
     if (mysqli_num_rows($query)>0) {
-        header("location:home.php");
-        $_SESSION['status'] = "berhasil";
-        $_SESSION['nama'] = $data;
+        if ($data[level]=='admin') {
+            header("location:home.php");
+            $_SESSION['status'] = "berhasil";
+            $_SESSION['nama'] = $data;
+        }
+        
     }else {
         echo"Login Anda Gagal";
     }
