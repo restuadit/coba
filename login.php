@@ -51,6 +51,10 @@ if (isset($_POST['login'])) {
             header("location:home.php");
             $_SESSION['status'] = "berhasil";
             $_SESSION['nama'] = $data;
+        }else {
+            header("location:home2.php");
+            $_SESSION['status'] = "berhasil";
+            $_SESSION['nama'] = $data;
         }
         
     }else {
