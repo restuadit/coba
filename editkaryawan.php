@@ -20,24 +20,27 @@ if (isset($_GET['id'])) {
     $data =mysqli_fetch_array($query);
 }
 ?>
-
-<form action="" method="post">
-    <table>
+<title> UPDATE</title>
+<link rel="stylesheet" href="bootstrap/bootstrap/css/bootstrap.min.css">
+<form action="" method="post" enctype="multipart/form-data" class="align-text-bottom">
+<h4 class="fw-bold">EDIT KARYAWAN</h4>
+<div class="container mb-4">
+    
         <tr>
-            <td>ID</td>
-            <td><input type="text" name="id" id="" value="<?= $data['id']?>"readonly></td>
+            <td class="fw-semibold ">ID</td>
+            <td><input class="form-control" type="text" name="id" value="<?= $data['id']?>"readonly  aria-label=".form-control-lg example"></td>
         </tr>
         <tr>
-            <td>Nama</td>
-            <td><input type="text" name="nama" id="" value="<?= $data['nama']?>"></td>
+            <td class="fw-semibold">Nama</td>
+            <td><input class="form-control" type="text" name="nama"  value="<?= $data['nama']?>" aria-label=".form-control-lg example"></td>
         </tr>
         <tr>
-            <td>Email</td>
-            <td><input type="email" name="email" id="" value="<?= $data['email']?>"></td>
+            <td class="fw-semibold">Email</td>
+            <td><input class="form-control " type="email"  name="email" value="<?= $data['email']?>" aria-label=".form-control-lg example"></td>
         </tr>
         <tr>
-            <td>password</td>
-            <td><input type="text" name="password" id="" value="<?= $data['password']?>"></td>
+            <td class="fw-semibold">password</td>
+            <td><input class="form-control" type="password" name="password" value="<?= $data['password']?>" aria-label=".form-control-lg example"></td>
         </tr>
         <tr>
             <?php
@@ -53,25 +56,37 @@ if (isset($_GET['id'])) {
               }
              
             ?>
-            <td>Jenis Kelamin</td>
+            <td class="fw-semibold">Jenis Kelamin</td>
             <td>
-            <input type="radio" name="jk" value="l" <?= $l ?>>Laki-laki
-            <input type="radio" name="jk" value="p" <?= $p ?>>perempuan
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="jk" value="l" <?= $l ?> name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Laki-Laki
+                </label>
+                </div>
+                <div class="form-check">
+                <input class="form-check-input" type="radio" name="jk" value="p" <?= $p ?> name="flexRadioDefault" id="flexRadioDefault2" >
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Perempuan
+                </label>
             </td>
         </tr>
         <tr>
-            <td>Alamat</td>
-            <td><textarea name="alamat" id="" cols="30" rows="10"><?= $data['alamat']?></textarea></td>
+        <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="alamat"><?= $data['alamat']?></textarea>
+        </div>
         </tr>
         <tr>
-            <td>No Hp</td>
-            <td><input type="text" name="no_hp" id="" value="<?= $data['no_hp']?>"></td>
+            <td class="fw-semibold">No Hp</td>
+            <td><input class="form-control" type="text" name="no_hp" value="<?= $data['no_hp']?>" aria-label=".form-control-lg example" ></td>
+
         </tr>
         <tr>
-    <td colspan=2 align="right">
-        <input type="submit" value="UPDATE" name="update">
-    </td>
-</tr>
-    </table>
-</form>
-<a href="tampilan.php">Kembali ke Halaman</a>
+            <td colspan=2 align="right">
+            <button class="btn btn-primary" type="submit" value="UPDATE" name="update">UPDATE</button>
+            </td>
+        </tr>
+        </form>
+        <a href="tampilan.php">Kembali ke Halaman</a>
+</div>
