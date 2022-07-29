@@ -39,7 +39,7 @@ session_start()
 <?php
 if (isset($_POST['login'])) {
     
-    include "koneksi.php";
+    include "konek.php";
 
     $username=mysqli_real_escape_string($koneksi,$_POST['nama']);
     $password=$_POST['password'];
